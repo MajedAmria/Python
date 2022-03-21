@@ -66,7 +66,7 @@ def min(list):
      return min
   
            
-"""
+
 def ultimate_analysis(list):
     dictionary ={'sumTotal': sum_total(list),
       'average': avarge(list),
@@ -75,7 +75,7 @@ def ultimate_analysis(list):
        'length': length(list)}
     return dictionary
 print(ultimate_analysis([37,2,1,-9]))
-"""
+
 def revers(list):
     if len(list)==0:
         return "list is empty!"

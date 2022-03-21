@@ -8,9 +8,8 @@ class User:
     def say_hello(self):
         return "hello"
 
-print(__name__)
+
 print(square(5))
-print(locals())
 user = User("Anna")
 print(user.name)
 print(user.say_hello())
