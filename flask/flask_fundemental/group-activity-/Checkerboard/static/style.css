@@ -1,0 +1,24 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.container{
+    /* border: solid black 1px; */
+    display:flex;
+    margin: 0 auto;
+    justify-content: center;
+
+
+}
+.redbox{
+    background-color: red;
+    border: solid black 1px;
+    width: 80px;
+    height: 80px;
+}
+.blackbox{
+    background-color: black;
+    border: solid black 1px;
+    width: 80px;
+    height: 80px;
+}
