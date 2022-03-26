@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+   <div>
+
+    <form action='/users' method='post'>
+    Name: <input type='text' name='name'><br>
+    <span>dojo location</span><select name="location">
+        <option >aaa</option>
+        <option >bbb</option>
+        <option >ccc</option>
+    </select><br>
+    <span>favorate language</span><select name="language" >
+        <option >java</option>
+        <option >php</option>
+        <option >puthon</option>
+    </select><br>
+    <input type='submit' value='button'>
+    </form>
+</div>
+</body>
+</html>
