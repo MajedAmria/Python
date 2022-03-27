@@ -1,0 +1,18 @@
+
+.first{
+    margin: 0 auto;
+    width: 15%;
+    height: 5%;
+    border: 1px solid black;
+  
+   
+
+}
+.second{ 
+   
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 15%;
+    height: 5%;
+    border: 1px solid black;
+}
