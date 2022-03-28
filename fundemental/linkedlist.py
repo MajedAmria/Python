@@ -26,11 +26,11 @@ class LinkedList:
         #    new node as head
         if self.head is None:
             self.head = new_node
-            return 
+            return self.head
  
         # 5. Else traverse till the last node
         last = self.head
-        while (last.next):
+        while (last.next==None):
             last = last.next
  
         # 6. Change the next of last node

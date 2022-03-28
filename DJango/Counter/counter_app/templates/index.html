@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Counter</h1>
+    <p>{{request.session.time}} Time</p>
+    <form action="/clear" method="post">
+        {% csrf_token %}
+        <button id="box1" name="botton" value="clear">clear</button>
+        <button id="box1" name="botton" value="reset">reset</button>
+        
+    </form>
+    <form action="/add" method="post">
+        {% csrf_token %}
+    <button id="box1" name="botton" value="add">+2</button>
+    </form>
+    <form action="/user" method="post">
+        {% csrf_token %}
+        enter your number: <input type='text' name='name'>
+        <button id="box1" name="botton" value="add">get</button>
+    </form>
+</body>
+</html>
