@@ -10,24 +10,41 @@
 </head>
 <body>
     
-    <h1>Welcome to the Great Game!</h1>
-    <p>I am thinking of number between 1 and 100</p>
-    <p>Tack a guess!</p>
-    {% if status == 'low': %}
-    <div class="box no_win">Too Low!</div>
-{% elif status == 'high': %}
-    <div class="box no_win">Too High!</div>
-
-{% elif status == 'win': %}
-    <div class="box win">
-        <p>
-            {{ randNum }} was the number!
-            Guess Attempts: {{ guesses }}
-        </p>
-    <form action='/users' method='post'>
-        {% csrf_token %}
-    <input type='text' name='name'><br>
-    <button type='submit'>Submit</button>
-    </form>
+    <div id="main">
+        <h4>Welcome to the Great Number Game!</h4>
+        <h6>I am thinking of a number between 1 and 100</h6>
+        <h5>Take a guess!</h5>
+        {% if request.session.status == 'low' %}
+            <div class="no_win">Too Low!</div>
+        {% elif request.session.status == 'high' %}
+            <div class="no_win">Too High!</div>
+        {% elif request.session.status == 'lose' %}
+            <div class="no_win">
+                <p>You Lose</p>
+                <form action='/destroy' method='post'>
+                    {% csrf_token %}
+                <button type="button">Try again?</button>
+            </form>
+            </div>
+        {% elif request.session.status == 'win' %}
+            <div class="win">
+                <p>
+                    {{ request.session.random }} was the number!
+                    Guess Attempts: {{ request.session.guesses }}
+                </p>
+                <form action='/destroy' method='post'>
+                    {% csrf_token %}
+                <button type="button" >Play again!</button>
+            </form>
+            </div>
+        {% endif %}
+        {% if request.session.status != 'win' and request.session.status != 'lose' %}
+        <form action='/guess' method='post'>
+            {% csrf_token %}
+            <input type="number" name="guess-value" min="1" max="100">
+            <input type="submit" value="Submit">
+        </form>
+        {% endif %}
+    </div>
 </body>
 </html>

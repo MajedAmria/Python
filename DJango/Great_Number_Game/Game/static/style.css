@@ -1,4 +1,39 @@
-h1{
-    margin: 0 auto;
-    
+#main{
+    height: 500px;
+    width: 800px;
+    margin: 50px;
+    padding: 50px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.no_win{
+    color: white;
+    border: 2px solid black;
+    font-weight: bold;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    margin: 15px 250px;
+    padding-top: 80px;
+    background-color: #CE2818;
+}
+.win{
+    color: white;
+    border: 2px solid black;
+    font-weight: bold;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    margin: 15px 250px;
+    padding-top: 80px;
+    background-color: #009E12;
+}
+button{
+    border: 2px solid black;
+    margin-top: 15px;
+}
+input{
+    margin-top: 5px;
+    text-align: center;
 }
