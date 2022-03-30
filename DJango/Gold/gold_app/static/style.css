@@ -1,0 +1,19 @@
+
+.cont{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.box{
+    text-align: center;
+    width: 20%;
+    border: 1px solid black;
+}
+.bottom{
+    
+}
+textarea{
+    width: 80%;
+    height: 200px;
+    text-decoration: green;
+}
