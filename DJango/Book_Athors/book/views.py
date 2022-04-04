@@ -25,3 +25,9 @@ def author_info(request):
     create_author(request.POST)
     return redirect("/author")
 
+def showbook(request,bookid):
+    x=show_book(bookid)
+    context={
+        'show':x
+    }
+    return render(request, 'book_info.html',context)

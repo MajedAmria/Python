@@ -9,7 +9,7 @@ urlpatterns = [
     path('shows/<int:Showid>',views.show),
     path('shows/<int:showid>/edit',views.edit),
     path('shows/<int:showid>/delete',views.delete),
-    # delete
+   
     path('shows/<int:showid>/update',views.update),
 
 ]
