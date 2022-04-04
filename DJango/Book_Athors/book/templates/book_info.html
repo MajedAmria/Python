@@ -16,7 +16,7 @@
     <li>{{author.first_name}}{{author.last_name}}</li>
     {% endfor %}
     {% endfor %}
-    <form action='/author' method='post'>
+    <form action='/books' method='post'>
         {% csrf_token %}
         Dojo: <select name="author" >
             {% for author in book.author.all %}	

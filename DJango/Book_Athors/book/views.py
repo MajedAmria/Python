@@ -26,8 +26,14 @@ def author_info(request):
     return redirect("/author")
 
 def showbook(request,bookid):
-    x=show_book(bookid)
+    x=models.show_book(bookid)
     context={
-        'show':x
+        'show':x,
     }
-    return render(request, 'book_info.html',context)
+    return render(request, "book_info.html",context)
+def showauthor(request,auhtorid):
+    x=models.show_author(auhtorid)
+    context={
+        'show':x,
+    }
+    return render(request, "author_info.html",context)

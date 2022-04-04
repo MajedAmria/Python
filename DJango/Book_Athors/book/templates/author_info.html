@@ -16,7 +16,7 @@
     <li>{{book.title}}</li>
     {% endfor %}
     {% endfor %}
-    <form action='/book' method='post'>
+    <form action='/showbook' method='post'>
         {% csrf_token %}
         Dojo: <select name="book" >
             {% for book in book_list%}	
