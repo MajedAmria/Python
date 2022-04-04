@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>author info </title>
 </head>
 <body>
     <h1>{{author.title}}</h1>
     <p>ID:{{author.id}}</p>
-    <p>Description:{{author.note}}</p>
-    <p>Authors:</p>
+    <p>Note:{{author.note}}</p>
+    <p>Books:</p>
     {% for book in book_list%}
     {% for author in book.authors.all%}
     <li>{{book.title}}</li>
     {% endfor %}
     {% endfor %}
-    <form action='/showbook' method='post'>
+    <form action='/authors' method='post'>
         {% csrf_token %}
-        Dojo: <select name="book" >
+        <select name="book" >
             {% for book in book_list%}	
             <option value={{book.id}}>{{book.title}}</option>
             {% endfor %}

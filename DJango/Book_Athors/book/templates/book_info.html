@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>book info</title>
 </head>
 <body>
     <h1>{{book.title}}</h1>
@@ -18,7 +18,7 @@
     {% endfor %}
     <form action='/books' method='post'>
         {% csrf_token %}
-        Dojo: <select name="author" >
+        <select name="author" >
             {% for author in book.author.all %}	
             <option value={{author.id}}>{{author.firs_name}} {{author.last_name}}</option>
             {% endfor %}

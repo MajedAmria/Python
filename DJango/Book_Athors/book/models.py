@@ -21,8 +21,7 @@ def create_book(info):
     Book.objects.create(title=info['title'], desc=info['desc'])
 def show_book(book_id):
     x=Book.objects.get(id=book_id)
-    # x.title=info['title']
-
+  
 
 def add_auth_to_book(info,book_id):
         thisBook = Book.objects.get(id=book_id)

@@ -28,12 +28,24 @@ def author_info(request):
 def showbook(request,bookid):
     x=models.show_book(bookid)
     context={
-        'show':x,
+        'book':x,
     }
     return render(request, "book_info.html",context)
 def showauthor(request,auhtorid):
     x=models.show_author(auhtorid)
     context={
-        'show':x,
+        'author':x,
     }
     return render(request, "author_info.html",context)
+
+def book_to_author(request):
+    book_id=request.POST['book_id']
+    author_id=request.POST['author_id']
+    models.add_book_to_auth(book_id,author_id)
+    return redirect('authors/author_id')
+
+def author_to_book(request):
+    book_id=request.POST['book_id']
+    author_id=request.POST['author_id']
+    models.add_auth_to_book(book_id,author_id)
+    return redirect('books/book_id')

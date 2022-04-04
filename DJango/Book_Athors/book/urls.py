@@ -8,6 +8,8 @@ urlpatterns = [
     path('author',views.author),
     path('add_author',views.author_info),
     path('books/<int:bookid>',views.showbook),
-    path('authors/<int:authorid>',views.showauthor),
+    path('authors/<int:auhtorid>',views.showauthor),
+    path('books',views.book_to_author),
+    path('authors',views.author_to_book),
    
 ]
