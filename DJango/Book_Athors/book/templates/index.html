@@ -15,7 +15,7 @@
     <form action='/add' method='post'>
         {% csrf_token %}
         Title: <input type='text' name='title'>
-        Description: <input type='text' name='disc'>
+        Description: <input type='text' name='desc'>
         <button type='submit'>Add</button>
     </form>
     <table class="table">
@@ -31,7 +31,7 @@
           <tr>
             <th scope="row">{{book.id}}</th>
             <td>{{book.title}}</td>
-            <td><a href="#" action="/show">views</a></td>
+            <td><a href="/books/{{ book.id }}">views</a></td>
           </tr>
           {%endfor%}
         </tbody>

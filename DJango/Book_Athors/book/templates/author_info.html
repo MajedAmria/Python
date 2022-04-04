@@ -7,20 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{book.title}}</h1>
-    <p>ID:{{book.id}}</p>
-    <p>Description:{{book.desc}}</p>
+    <h1>{{author.title}}</h1>
+    <p>ID:{{author.id}}</p>
+    <p>Description:{{author.note}}</p>
     <p>Authors:</p>
-    {% for author in author_list%}
-    {% for book in author.books.all%}
-    <li>{{author.first_name}}{{author.last_name}}</li>
+    {% for book in book_list%}
+    {% for author in book.authors.all%}
+    <li>{{book.title}}</li>
     {% endfor %}
     {% endfor %}
-    <form action='/author' method='post'>
+    <form action='/book' method='post'>
         {% csrf_token %}
-        Dojo: <select name="author" >
-            {% for author in author_list%}	
-            <option value={{author.id}}>{{author.firs_name}} {{author.last_name}}</option>
+        Dojo: <select name="book" >
+            {% for book in book_list%}	
+            <option value={{book.id}}>{{book.title}}</option>
             {% endfor %}
         </select>
         <button type='submit'>Add</button>

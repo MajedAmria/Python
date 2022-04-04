@@ -5,8 +5,6 @@ from . import models
 
 def book(request):
     list_of_book = models.list_of_all_books()
-
-    
     context = {
         "book_list" : list_of_book,
     }
@@ -21,9 +19,9 @@ def author(request):
     return render(request,"index2.html",context)
 def book_info(request):
     create_book(request.POST)
-
     return redirect("/")
 
 def author_info(request):
     create_author(request.POST)
-    return redirect("/")
+    return redirect("/author")
+
