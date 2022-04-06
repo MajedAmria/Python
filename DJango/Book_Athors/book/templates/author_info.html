@@ -7,20 +7,21 @@
     <title>author info </title>
 </head>
 <body>
-    <h1>{{author.title}}</h1>
+    <h1>{{author.first_name}}  {{author.last_name}}</h1>
     <p>ID:{{author.id}}</p>
     <p>Note:{{author.note}}</p>
     <p>Books:</p>
-    {% for book in book_list%}
-    {% for author in book.authors.all%}
-    <li>{{book.title}}</li>
-    {% endfor %}
-    {% endfor %}
+
+            {%  for book in author.books.all  %}
+               <li>{{book.title}}</li>
+            {% endfor %}
+     
     <form action='/authors' method='post'>
         {% csrf_token %}
+        <input type="hidden" value="{{author.id}}" name="author_id">
         <select name="book" >
-            {% for book in book_list%}	
-            <option value={{book.id}}>{{book.title}}</option>
+            {% for book in remaining_books %}	
+               <option value={{book.id}}>{{book.title}}</option>
             {% endfor %}
         </select>
         <button type='submit'>Add</button>
