@@ -1,4 +1,5 @@
 
+
 import bcrypt
 from multiprocessing import context
 from django.shortcuts import render,redirect
@@ -11,7 +12,6 @@ def index(request):
 
 def regestration(request):
     errors = User.objects.basic_validator(request.POST)
-
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
@@ -45,16 +45,22 @@ def login(request):
             
                 return redirect('/success')
             else:
-                messages.error(request,"incorrect password")    
+                messages.error(request,"incorrect password") 
+                  
     return redirect('/')
     
 def sucsses(request):
-    user=User.objects.get(email=request.session['email'])
-    context={
-        'firstname': user.first_name
-    }
+    if  'email' in request.session :
+      user=User.objects.get(email=request.session['email'])
     
-    return render(request,"sucsses.html",context) 
+      context={
+            'firstname': user.first_name
+                }
+    
+      return render(request,"sucsses.html",context) 
+    else:
+      return redirect('/')
+    
 def logout(request):
     del request.session['email']
     
