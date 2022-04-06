@@ -45,9 +45,7 @@ def login(request):
             
                 return redirect('/success')
             else:
-                messages.error(request,"incorrect password")
-        # if user is None:
-        #     print("***************",user.email)    
+                messages.error(request,"incorrect password")    
     return redirect('/')
     
 def sucsses(request):

@@ -9,19 +9,27 @@ class BlogManager(models.Manager):
             errors["first_name"] = "Blog first name should be at least 2 characters"
         if len(postData['last_name']) < 2:
             errors["last_name"] = "Blog last name should be at least 3 characters"
+        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+        if not EMAIL_REGEX.match(postData['email']):    # test whether a field matches the pattern            
+            errors['email'] = "Invalid email address!"
+        new_user_email=User.objects.filter(email=postData['email'])
+        if len(new_user_email):
+            errors['email']="email is already exsist"
         if len(postData['password']) < 8:
             errors["password"] = "Blog password should be at least 8 characters" 
         if postData['password'] != postData['confirm']:
             errors["confirm"] = "Not confirm password"    
         return errors
+
+
     def login_validator(self,postData):
-        # user = User.objects.get(email=postData['email']) 
+        user = User.objects.filter(email=postData['email']) 
         errors = {}
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(postData['email']):    # test whether a field matches the pattern            
             errors['email'] = "Invalid email address!"
-        # if postData['email'] != user.email:
-        #     errors['email'] = "incorrect email"
+        if not len(user):
+            errors['email']="email is not valid"
         if len(postData['password']) < 8:
             errors['password'] = "Blog password should be at least 8 characters"
            
