@@ -13,11 +13,37 @@
         <h1 class="nav-title">Coding Dojo Wall</h1>
         <ul class="nav-links">
             <li><a href="#" class="active">Welcome  {{firstname}}</a></li>
-            <form action="delete">
+            <form action="delete" method="post">
+                {% csrf_token %}
                 <li><button class="btn" type="submit">log off</button></li>
             </form>
         </ul>
     </div>
+    <div class="main">
+    <form action="post_message" method="post">
+        {% csrf_token %}
+        <p>Post a message</p>
+        <textarea name="message" ></textarea>
+        <input type="hidden" value="firstname">
+        <br>
+        <input type="submit" value="Post a Message">
+        
+    </form>
+    <form action="comment" method="post">
+        {% csrf_token %}
+        <p>Post a comment</p>
+        <textarea name="comment" ></textarea>
+        <input type="hidden" value="id">
+        <br>
+        <input type="submit" value="Post a Comment">
+    </form>
+    <!-- <form action="post_comment" method="post">
+        {% csrf_token %}
+        {% for comment in message.comments.all %}    
+        <p>{{comment.comment}}</p>
+    {% endfor %}
+    </form> -->
     
+</div>
 </body>
 </html>

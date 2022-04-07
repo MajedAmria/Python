@@ -36,8 +36,9 @@
      margin-bottom: 20px;
      list-style-type: none;
      display:flex ;
-     
-     
-    
-    
+   
  }
+.main{
+    text-align: center;
+    margin: 0 auto;
+}
