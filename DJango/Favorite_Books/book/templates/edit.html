@@ -38,7 +38,7 @@
     <h1>User who like this book</h1>
     {% for user in all_user %}
     <p>{{user.first_name}}</p>
-    {%if user == request.session.user_id %}<a  class="left" href="/book/{{book.id}}">un Favorites</a>{%endif%}
+    {%if user in users.book_upload.all %}<a  class="left" href="/book/{{book.id}}">un Favorites</a>{%endif%}
         {% endfor %}
     {% if messages %}
    <ul class="messages">    

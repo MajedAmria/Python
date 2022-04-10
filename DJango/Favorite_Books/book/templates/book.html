@@ -41,5 +41,10 @@
 {%if book in user.users.all %}<p>This is one of your favorites</p>{%else%}<a  class="left" href="/book/{{book.id}}">Add to Favorites</a>{%endif%}<br>
         {% endfor %}
 
+        <h1>Your Favorite Books</h1>
+        {% for l in liked%}
+        <a href="books/{{l.id}}"><h4>{{l.title}}</h4></a>
+        <p>(added by {{l.book_upload.first_name}} {{l.book_upload.last_name}})</p>
+        {%endfor%}
 </body>
 </html>

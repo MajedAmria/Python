@@ -87,6 +87,7 @@ def book(request):
             'user':user,
             'list_book':book,
             'list_user':users,
+            'liked' : User.objects.filter(email=request.session['email']).first().users.all()
                 }
     
       return render(request,"book.html",context) 
