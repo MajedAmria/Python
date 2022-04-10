@@ -45,21 +45,5 @@ def login(request):
             else:
                 messages.error(request,"incorrect password") 
                   
-    return redirect('/')
+    return redirect('/wall')
     
-def sucsses(request):
-    if  'email' in request.session :
-      user=User.objects.get(email=request.session['email'])
-    
-      context={
-            'firstname': user.first_name
-                }
-    
-      return render(request,"dashbord.html",context) 
-    else:
-      return redirect('/')
-    
-def logout(request):
-    del request.session['email']
-    
-    return redirect('/')

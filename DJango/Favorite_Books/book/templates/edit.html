@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}	
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="nav">
+        <h1 class="nav-title">Welcome  {{firstname}}</h1>
+        <ul class="nav-links">
+            
+            <form action="logut" method="post">
+                {% csrf_token %}
+                <li><button class="btn" type="submit">log off</button></li>
+            </form>
+        </ul>
+    </div>
+    <form action="/book_update" method="post">
+        {% csrf_token %}
+        <input type="hidden" value={{book.id}} name="this_book_id">
+       Title: <input type="text" name="title" value="{{book.title}}">
+       <p>Added by:{{book.book_upload.first_name}} </p>
+       <p>Added on: {{book.created_at}}</p>
+       <p>last updated: {{book.updated_at}}</p>
+       Description: <input type="text" name="desc" value="{{book.desc}}">
+       <input type="submit" value="update">
+    </form> 
+    <form action="/delete" method="post">
+        {% csrf_token %}
+        <input type="hidden" value={{book.id}} name="this_book_id">
+       <input type="submit" value="delete">
+    </form>
+
+    <h1>User who like this book</h1>
+    {% for user in all_user %}
+    <p>{{user.first_name}}</p>
+    {%if user == request.session.user_id %}<a  class="left" href="/book/{{book.id}}">un Favorites</a>{%endif%}
+        {% endfor %}
+    {% if messages %}
+   <ul class="messages">    
+       {% for message in messages %}    
+           <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+       {% endfor %}
+   </ul>
+{% endif %}
+</body>
+</html>

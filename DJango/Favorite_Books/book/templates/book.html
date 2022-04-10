@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}	
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="nav">
+        <h1 class="nav-title">Welcome  {{firstname}}</h1>
+        <ul class="nav-links">
+            
+            <form action="logut" method="post">
+                {% csrf_token %}
+                <li><button class="btn" type="submit">log off</button></li>
+            </form>
+        </ul>
+    </div>
+    <h1>Add a favorate book</h1>
+
+<form action="create" method="post">
+    {% csrf_token %}
+   Title: <input type="text" name="title">
+   Description: <input type="text" name="desc">
+   <input type="submit" value="add">
+</form>  
+{% if messages %}
+<ul class="messages">    
+    {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+</ul>
+{% endif %}
+<h1>All Books </h1>
+{% for book in list_book %}
+<a href="book/{{book.id}}">{{book.title}}</a>
+<p>added by : {{book.book_upload.first_name}} </p>
+{%if book in user.users.all %}<p>This is one of your favorites</p>{%else%}<a  class="left" href="/book/{{book.id}}">Add to Favorites</a>{%endif%}<br>
+        {% endfor %}
+
+</body>
+</html>
