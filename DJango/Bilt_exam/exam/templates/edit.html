@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/car" method="post">
+        {% csrf_token %}
+        <button class="btn" type="submit">Dashbord</button>
+    </form>
+    <form action="/add" method="post">
+        {% csrf_token %}
+        <button class="btn" type="submit">log off</button>
+    </form>
+
+
+    <h1>Edit {{car.model}}</h1>
+    <form action="/update" method="post">
+        {% csrf_token %}
+    Price:<input  type="text" name="price" value="{{car.price}}" required><br>
+    Model:<input  type="text" name="model" value="{{car.model}}" required><br>
+    Make:<input  type="text" name="maker" value="{{car.maker}}" required><br>
+    Year:<input  type="text" name="year" value="{{car.year}}" required>
+    <br>
+    Desciption:<input type="text" name="desc" value="car.desc" required>
+
+    <button type="submit" value="Add">Update</button>
+    </form>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+ {% endif %}
+</body>
+</html>

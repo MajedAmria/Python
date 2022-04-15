@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/car" method="post">
+        {% csrf_token %}
+        <button class="btn" type="submit">Dashbord</button>
+    </form>
+    <form action="/add" method="post">
+        {% csrf_token %}
+        <button class="btn" type="submit">log off</button>
+    </form>
+    <div class="box">
+        <h1>{{car.price}}</h1>
+        <p>Model:{{car.models}}</p>
+        <p>Make:{{car.maker}}</p>
+        <p>Year:{{car.year}}</p>
+        <p>Description:{{car.desc}}</p>
+        <p>Seller{{seller.first_name}}</p>
+    </div>
+    <form action="/delete_car" method="post">
+        {% csrf_token %}
+        <button class="btn" type="submit">Purchased</button>
+</body>
+</html>
